@@ -1,0 +1,87 @@
+ /* LAYOUT */
+
+ body {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-color: rgba(240, 219, 193, 1);
+ }
+
+
+ main {
+   width: 1180px;
+   height: 800px;
+   background-color: rgba(240, 219, 193, 1);
+   margin: 0;
+ }
+
+ header {
+   width: 1180px;
+   height: 102px;
+   background-color: rgba(250, 205, 166, 1);
+   position: relative;
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+ }
+
+ footer {
+   width: 1180px;
+   height: 102px;
+   background-color: rgba(250, 205, 166, 1);
+ }
+
+ /* HEADER */
+ .logo {
+   width: 288px;
+   height: 271px;
+   border-radius: 50%;
+   position: absolute;
+   left: -38px;
+   top: -45px;
+ }
+
+ .home,
+ .cart,
+ .shop {
+   margin-left: 244px;
+   font-size: 36px;
+   color: rgba(52, 27, 37, 1);
+   text-decoration: none;
+   font-weight: bold;
+ }
+
+ /* BUTTON */
+ .btn {
+   color: white;
+   background-color: rgba(52, 27, 37, 1);
+   font-weight: bold;
+ }
+
+ .btn:hover {
+   background-color: rgba(52, 27, 37, 1);
+   color: white;
+   ;
+ }
+
+ /* HOME  */
+ .home-container {
+   width: 100%;
+   height: 100%;
+   background-image: url('/home-bg.avif');
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+ }
+
+ .shop-section {
+   height: 292px;
+   width: 514px;
+   background-color: rgba(242, 179, 124, 1);
+ }
+
+ .shop-section p {
+   font-size: 36px;
+   color: rgba(52, 27, 37, 1);
+   font-weight: 800;
+ }
