@@ -7,7 +7,7 @@ const DefaultLayout = () => {
         <>
 
             <header>
-                <img className='logo' src="/logo.png" alt="" />
+                <img className='logo' src="/new-logo.png" alt="" />
                 <NavLink className='home' to='/'>Home</NavLink>
                 <NavLink className='cart' to='/cart'><i className="fa-solid fa-cart-shopping"></i></NavLink>
                 <NavLink className='shop' to='/shop'>Shop</NavLink>

@@ -10,9 +10,12 @@
 
  main {
    width: 1180px;
-   height: 800px;
+   height: 1000px;
    background-color: rgba(240, 219, 193, 1);
    margin: 0;
+   display: flex;
+   justify-content: center;
+   align-items: center;
  }
 
  header {
@@ -33,12 +36,13 @@
 
  /* HEADER */
  .logo {
-   width: 288px;
-   height: 271px;
+   width: 250px;
+   height: 210px;
    border-radius: 50%;
    position: absolute;
    left: -38px;
-   top: -45px;
+   top: -32px;
+
  }
 
  .home,
@@ -52,13 +56,15 @@
  }
 
  /* BUTTON */
- .btn {
+ .button {
    color: white;
    background-color: rgba(52, 27, 37, 1);
    font-weight: bold;
+   border-radius: 25px;
+   padding: 12px;
  }
 
- .btn:hover {
+ .button:hover {
    background-color: rgba(52, 27, 37, 1);
    color: white;
    ;
@@ -84,4 +90,10 @@
    font-size: 36px;
    color: rgba(52, 27, 37, 1);
    font-weight: 800;
+ }
+
+ /* CARD */
+ .card-body {
+   background-color: rgba(250, 205, 166, 1);
+   color: rgba(52, 27, 37, 1);
  }
