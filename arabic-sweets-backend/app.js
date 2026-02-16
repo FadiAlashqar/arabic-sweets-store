@@ -4,11 +4,15 @@ const app = express();
 
 const port = process.env.SERVER_PORT
 
+const cors = require('cors')
+
 const sweetsRouter = require('./routers/sweetsRouter')
 
 const notFound = require('./middlewares/notFound')
 const errorsHandler = require('./middlewares/errorsHandler')
 const imagePath = require('./middlewares/imagePath')
+
+app.use(cors({ origin: process.env.FE_APP }))
 
 app.use(express.static('public'));
 
