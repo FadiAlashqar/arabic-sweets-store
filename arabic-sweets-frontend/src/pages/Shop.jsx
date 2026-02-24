@@ -20,7 +20,7 @@ const Shop = () => {
                         <p className="text-danger">{error}</p>
                     ) : info.length > 0 ? (
                         info.map((i) => (
-                            <div key={i.id} className="col-3">
+                            <div key={i.id} className="col-3 mt-2">
                                 <Card
                                     img={i.image_url}
                                     title={i.name}

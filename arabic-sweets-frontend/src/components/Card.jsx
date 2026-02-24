@@ -3,8 +3,8 @@ import React from 'react'
 const Card = ({ img, title, description, }) => {
     return (
         <div className="card">
-            <div className="card-img-top">
-                <img className='img-fluid' src={img} alt="" />
+            <div className="img-wrapper">
+                <img src={img} alt="" />
             </div>
             <div className="card-body">
                 <h5 className="card-title">{title}</h5>
