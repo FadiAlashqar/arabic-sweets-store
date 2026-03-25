@@ -25,6 +25,7 @@ const Shop = () => {
                                     img={i.image_url}
                                     title={i.name}
                                     description={i.description}
+                                    price={i.price}
                                 />
                             </div>
                         ))
