@@ -90,6 +90,11 @@
  }
 
  /* CARD */
+ .card {
+   border-radius: 8px;
+   overflow: hidden;
+ }
+
  .card-body {
    background-color: rgba(250, 205, 166, 1);
    color: rgba(52, 27, 37, 1);

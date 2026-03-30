@@ -8,7 +8,10 @@ router.get('/', sweetsController.index);
 
 router.get('/:id', sweetsController.show);
 
-router.get('/add/:id', sweetsController.addToCart);
+router.post('/add/:id', sweetsController.addToCart);
 
+router.patch('/remove/:id', sweetsController.updateRemoveFromCart);
+
+router.post('/order', sweetsController.createOrder);
 
 module.exports = router
