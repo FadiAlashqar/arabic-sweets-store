@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Card = ({ img, title, description, price }) => {
+const Card = ({ img, title, description, price, handleClick, id }) => {
     return (
         <div className="card">
             <div className="img-wrapper">
@@ -13,7 +13,7 @@ const Card = ({ img, title, description, price }) => {
                 </div>
                 <div className="bottom d-flex justify-content-between mt-2 align-items-center">
                     <p className="card-text fw-bold fs-5">{price}€</p>
-                    <p className="card-text" style={{ cursor: "pointer" }}><i class="fa-solid fa-cart-arrow-down fs-4"></i></p>
+                    <button onClick={() => { handleClick(id) }} style={{ all: 'unset', cursor: 'pointer' }}><i class="fa-solid fa-cart-arrow-down fs-4"></i></button>
                 </div>
             </div>
         </div >

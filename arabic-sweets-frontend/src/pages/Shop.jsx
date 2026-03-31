@@ -2,18 +2,40 @@ import React from 'react'
 import { GlobalContext } from '../contexts/GlobalContext'
 import { useContext } from 'react'
 import Card from '../components/Card'
+import axios from 'axios'
+import { useState } from 'react'
 
 
 const Shop = () => {
 
     const { info, loading, error } = useContext(GlobalContext)
 
+    const [alert, setAlert] = useState(false)
+
     console.log(info)
+
+    const handlebutton = async (id) => {
+        try {
+            const res = await axios.post(`http://localhost:3000/API/sweets/add/${id}`)
+            setAlert(true)
+            setTimeout(() => setAlert(false), 2500)
+        }
+        catch (err) {
+            console.error(err)
+        }
+    }
 
     return (
         <>
             <div className="container p-5">
+                <div className="row">
+                </div>
                 <div className="row mt-5">
+                    <div className='sticky-top'>
+                        {alert && <div className="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong>Product added to cart!</strong>
+                        </div>}
+                    </div>
                     {loading ? (
                         <p>Caricamento...</p>
                     ) : error ? (
@@ -26,6 +48,8 @@ const Shop = () => {
                                     title={i.name}
                                     description={i.description}
                                     price={i.price}
+                                    handleClick={handlebutton}
+                                    id={i.id}
                                 />
                             </div>
                         ))
