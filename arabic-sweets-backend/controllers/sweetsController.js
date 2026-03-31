@@ -125,11 +125,25 @@ const createOrder = ((req, res) => {
     })
 })
 
+const cartIndex = ((req, res) => {
+
+    const cartSql = `SELECT * FROM arabicsweets_db.cart_items`
+    connection.query(cartSql, (err, cart) => {
+        if (err) return res.status(500).json({ error: `Database query failed: ${err}` })
+        if (cart.length === 0) return res.status(404).json({ error: 'Cart empty!' })
+
+        res.status(200).json(cart)
+    })
+
+
+})
+
 module.exports = {
     index,
     show,
     addToCart,
     updateRemoveFromCart,
-    createOrder
+    createOrder,
+    cartIndex
 
 }

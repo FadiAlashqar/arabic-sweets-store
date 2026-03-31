@@ -14,4 +14,6 @@ router.patch('/remove/:id', sweetsController.updateRemoveFromCart);
 
 router.post('/order', sweetsController.createOrder);
 
+router.get('/see/cart', sweetsController.cartIndex)
+
 module.exports = router
