@@ -130,7 +130,7 @@ const cartIndex = ((req, res) => {
     const cartSql = `SELECT products.name, products.id, products.price, products.image_url, cart_items.quantity FROM products JOIN cart_items ON products.id = cart_items.product_id`
     connection.query(cartSql, (err, cart) => {
         if (err) return res.status(500).json({ error: `Database query failed: ${err}` })
-        if (cart.length === 0) return res.status(404).json({ error: 'Cart empty!' })
+        if (cart.length === 0) return res.json(cart)
 
         const completeCart = cart.map((r) => {
             return {

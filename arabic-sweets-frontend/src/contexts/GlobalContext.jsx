@@ -32,7 +32,6 @@ export default function GlobalProvider({ children }) {
         }
         catch (err) {
             console.error(err)
-            setError('Errore nel recupero dei dati!')
         }
     }
 
