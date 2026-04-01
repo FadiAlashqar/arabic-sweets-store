@@ -1,6 +1,34 @@
 import React from 'react'
+import CartCard from '../components/CartCard'
+import { useContext } from 'react'
+import { GlobalContext } from '../contexts/GlobalContext'
+import axios from 'axios'
 
 const Cart = () => {
+
+    const { cartInfo, fetchCart } = useContext(GlobalContext)
+    console.log(cartInfo)
+
+    const handleRemove = async (id) => {
+        try {
+            await axios.patch(`http://localhost:3000/API/sweets/remove/${id}`)
+            fetchCart()
+        }
+        catch (err) {
+            console.error(err)
+        }
+    }
+
+    const handleAdd = async (id) => {
+        try {
+            await axios.post(`http://localhost:3000/API/sweets/add/${id}`)
+            fetchCart()
+        }
+        catch (err) {
+            console.error(err)
+        }
+    }
+
     return (
         <div className="container p-5">
             <div className="row g-2">
@@ -8,75 +36,21 @@ const Cart = () => {
                     <h1>CART</h1>
                 </div>
                 <div className="col-8 d-flex flex-column">
-                    <div className="card mb-2">
-                        <div className="row">
-                            <div className="col-4">
-                                <div className="img-wrapper">
-                                    <img src="./new-logo.png" alt="" />
-                                </div>
+                    {cartInfo.length === 0 ? 'Cart is empty!' :
+                        cartInfo.map((c) => {
+                            return <div key={c.id}>
+                                <CartCard
+                                    name={c.name}
+                                    price={c.price}
+                                    img={c.image_url}
+                                    quantity={c.quantity}
+                                    remove={() => handleRemove(c.id)}
+                                    add={() => handleAdd(c.id)}
+                                />
                             </div>
-                            <div className="col-8 p-3 d-flex flex-column justify-content-between">
-                                <div className='d-flex justify-content-between m-2'>
-                                    <p className='bold'>Name</p>
-                                    <p className='bold'>Price</p>
-                                </div>
-                                <div className='d-flex justify-content-between m-2'>
-                                    <div className="btn-quantity d-flex align-items-center">
-                                        <button className='mx-1'>-</button>
-                                        <span className='mx-1'>1</span>
-                                        <button className='mx-1'>+</button>
-                                    </div>
-                                    <button type="button" class="button">Remove</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="card mb-2">
-                        <div className="row">
-                            <div className="col-4">
-                                <div className="img-wrapper">
-                                    <img src="./new-logo.png" alt="" />
-                                </div>
-                            </div>
-                            <div className="col-8 p-3 d-flex flex-column justify-content-between">
-                                <div className='d-flex justify-content-between m-2'>
-                                    <p className='bold'>Name</p>
-                                    <p className='bold'>Price</p>
-                                </div>
-                                <div className='d-flex justify-content-between m-2'>
-                                    <div className="btn-quantity d-flex align-items-center">
-                                        <button className='mx-1'>-</button>
-                                        <span className='mx-1'>1</span>
-                                        <button className='mx-1'>+</button>
-                                    </div>
-                                    <button type="button" class="button">Remove</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="card mb-2">
-                        <div className="row">
-                            <div className="col-4">
-                                <div className="img-wrapper">
-                                    <img src="./new-logo.png" alt="" />
-                                </div>
-                            </div>
-                            <div className="col-8 p-3 d-flex flex-column justify-content-between">
-                                <div className='d-flex justify-content-between m-2'>
-                                    <p className='bold'>Name</p>
-                                    <p className='bold'>Price</p>
-                                </div>
-                                <div className='d-flex justify-content-between m-2'>
-                                    <div className="btn-quantity d-flex align-items-center">
-                                        <button className='mx-1'>-</button>
-                                        <span className='mx-1'>1</span>
-                                        <button className='mx-1'>+</button>
-                                    </div>
-                                    <button type="button" class="button">Remove</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        })
+
+                    }
                 </div>
                 <div className="col-4 d-flex justify-content-end">
                     <div className="summary sticky-top">

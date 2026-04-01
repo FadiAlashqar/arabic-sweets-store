@@ -8,7 +8,7 @@ import { useState } from 'react'
 
 const Shop = () => {
 
-    const { info, loading, error } = useContext(GlobalContext)
+    const { info, loading, error, fetchCart } = useContext(GlobalContext)
 
     const [alert, setAlert] = useState(false)
 
@@ -18,6 +18,7 @@ const Shop = () => {
         try {
             const res = await axios.post(`http://localhost:3000/API/sweets/add/${id}`)
             setAlert(true)
+            fetchCart()
             setTimeout(() => setAlert(false), 2500)
         }
         catch (err) {
