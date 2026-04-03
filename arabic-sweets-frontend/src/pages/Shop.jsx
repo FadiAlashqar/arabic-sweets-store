@@ -31,7 +31,7 @@ const Shop = () => {
             <div className="container p-5">
                 <div className="row">
                 </div>
-                <div className="row mt-5">
+                <div className="row mt-5 g-3">
                     <div className='sticky-top'>
                         {alert && <div className="alert alert-success alert-dismissible fade show" role="alert">
                             <strong>Product added to cart!</strong>
@@ -43,7 +43,7 @@ const Shop = () => {
                         <p className="text-danger">{error}</p>
                     ) : info.length > 0 ? (
                         info.map((i) => (
-                            <div key={i.id} className="col-3 mt-2">
+                            <div key={i.id} className="col-3 mt-4">
                                 <Card
                                     img={i.image_url}
                                     title={i.name}

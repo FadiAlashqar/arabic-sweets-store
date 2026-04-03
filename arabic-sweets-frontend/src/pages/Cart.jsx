@@ -29,6 +29,15 @@ const Cart = () => {
         }
     }
 
+    const subTotal = Math.round(
+        cartInfo.reduce((acc, c) => acc + Number(c.price) * c.quantity, 0) * 100
+    ) / 100
+    const shipping = subTotal > 80 ? 5 : 10
+
+    const total = shipping + subTotal
+
+    console.log(subTotal)
+
     return (
         <div className="container p-5">
             <div className="row g-2">
@@ -57,15 +66,15 @@ const Cart = () => {
                         <h3 className='mb-5'>Order summary</h3>
                         <div className='d-flex justify-content-between'>
                             <p>Subtotale</p>
-                            <span>100</span>
+                            <span>{subTotal.toFixed(2)} €</span>
                         </div>
                         <div className='d-flex justify-content-between'>
                             <p>Spedizione</p>
-                            <span>5</span>
+                            <span>{shipping} €</span>
                         </div>
                         <div className='d-flex justify-content-between'>
                             <p>Totale</p>
-                            <span>105</span>
+                            <span>{total.toFixed(2)} €</span>
                         </div>
                     </div>
                 </div>
