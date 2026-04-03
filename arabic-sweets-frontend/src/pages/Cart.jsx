@@ -41,8 +41,8 @@ const Cart = () => {
     return (
         <div className="container p-5">
             <div className="row g-2">
-                <div className="col-12 d-flex justify-content-end">
-                    <h1>CART</h1>
+                <div className="col-12 d-flex justify-content-end mb-4">
+                    <h1 className='bold' style={{ color: 'rgba(52, 27, 37, 1)' }}>Your shopping cart</h1>
                 </div>
                 <div className="col-8 d-flex flex-column">
                     {cartInfo.length === 0 ? 'Cart is empty!' :
@@ -65,15 +65,15 @@ const Cart = () => {
                     <div className="summary sticky-top">
                         <h3 className='mb-5'>Order summary</h3>
                         <div className='d-flex justify-content-between'>
-                            <p>Subtotale</p>
+                            <p className='bold'>Subtotale :</p>
                             <span>{subTotal.toFixed(2)} €</span>
                         </div>
                         <div className='d-flex justify-content-between'>
-                            <p>Spedizione</p>
+                            <p className='bold'>Spedizione :</p>
                             <span>{shipping} €</span>
                         </div>
                         <div className='d-flex justify-content-between'>
-                            <p>Totale</p>
+                            <p className='bold'>Totale :</p>
                             <span>{total.toFixed(2)} €</span>
                         </div>
                     </div>
