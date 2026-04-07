@@ -8,12 +8,12 @@ const DefaultLayout = () => {
 
             <header>
                 <img className='logo' src="/new-logo.png" alt="" />
-                <NavLink className='home' to='/'>Home</NavLink>
-                <NavLink className='cart' to='/cart'><i className="fa-solid fa-cart-shopping"></i></NavLink>
-                <NavLink className='shop' to='/shop'>Shop</NavLink>
+                <NavLink className='home {({isActive}) => isActive ? "active" : ""}' to='/'>Home</NavLink>
+                <NavLink className='cart {({isActive}) => isActive ? "active" : ""}' to='/cart'><i className="fa-solid fa-cart-shopping"></i></NavLink>
+                <NavLink className='shop {({isActive}) => isActive ? "active" : ""}' to='/shop'>Shop</NavLink>
 
 
-            </header>
+            </header >
             <main>
                 <Outlet />
             </main>

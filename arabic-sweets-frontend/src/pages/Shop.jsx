@@ -29,8 +29,6 @@ const Shop = () => {
     return (
         <>
             <div className="container p-5">
-                <div className="row">
-                </div>
                 <div className="row mt-5 g-3">
                     <div className='sticky-top'>
                         {alert && <div className="alert alert-success alert-dismissible fade show" role="alert">
