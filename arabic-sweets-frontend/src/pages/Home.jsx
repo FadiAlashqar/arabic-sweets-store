@@ -44,7 +44,7 @@ const Home = () => {
             </div>
             <div className="us d-flex">
                 <div className='left'>
-                    <img src="./public/us.png" alt="" />
+                    <img src="./us.png" alt="" />
                 </div>
                 <div className='right'>
                     <span className='bold'>OUR HERITAGE</span>

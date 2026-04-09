@@ -90,7 +90,7 @@
  /* HOME  */
 
  .hero {
-   background-image: url('../public/benjamin-chambon-OEDeQheVySQ-unsplash.jpg');
+   background-image: url('../benjamin-chambon-OEDeQheVySQ-unsplash.jpg');
    height: calc(100vh - 102px);
    background-size: cover;
    background-position: center;
@@ -135,6 +135,7 @@
  .popular {
    height: calc(100vh - 102px);
    width: 100%;
+   color: rgba(52, 27, 37, 1);
  }
 
  .popular .card {
@@ -222,4 +223,24 @@
 
  .bold {
    font-weight: bolder;
+ }
+
+ /* SHOP */
+
+ .search {
+   border: 1px solid rgba(52, 27, 37, 1);
+   padding: 8px;
+   width: 25%;
+   border-radius: 10px;
+ }
+
+ .search input {
+   border: none;
+   background-color: transparent;
+   all: unset;
+   width: 85%;
+ }
+
+ .search input::placeholder {
+   color: rgba(52, 27, 37, 1, 0.6);
  }
