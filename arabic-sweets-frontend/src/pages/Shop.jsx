@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { GlobalContext } from '../contexts/GlobalContext'
 import { useContext } from 'react'
 import Card from '../components/Card'
@@ -14,6 +14,8 @@ const Shop = () => {
     const [alert, setAlert] = useState(false)
 
     const [query, setQuery] = useState("")
+
+    const [sort, setSort] = useState("default")
 
     console.log(query)
 
@@ -31,57 +33,47 @@ const Shop = () => {
 
     const filteredInfo = useMemo(() => info.filter((i) => i.name.toLowerCase().includes(query) || i.description.toLowerCase().includes(query)), [query, info])
 
-    console.log(filteredInfo)
+    console.log(filteredInfo, "filtered info")
+    console.log(sort)
 
     const renderProducts = () => {
+
+        let items;
         if (loading) {
             return <span>Caricamento...</span>
         }
         if (error) {
             return <span className="text-danger">{error}</span>
         }
-        if (filteredInfo.length > 0) {
-            return filteredInfo.map((f) => {
-                return <div key={f.id} className="col-3 mt-4">
-                    <Card
-                        img={f.image_url}
-                        title={f.name}
-                        description={f.description}
-                        price={f.price}
-                        handleClick={handlebutton}
-                        id={f.id}
-                    />
-                </div>
-            })
-        }
-        if (filteredInfo.length === 0 && query != "") {
+        items = query !== "" ? [...filteredInfo] : [...info]
+        if (items.length === 0 && query !== "") {
             return <span>Nessun prodotto trovato con il criterio di ricerca inserito</span>
         }
-        if (query === "" && info.length > 0) {
-            return info.map((i) => (
-                <div key={i.id} className="col-3 mt-4">
-                    <Card
-                        img={i.image_url}
-                        title={i.name}
-                        description={i.description}
-                        price={i.price}
-                        handleClick={handlebutton}
-                        id={i.id}
-                    />
-                </div>
-            ))
+        if (sort === "ASC") {
+            items.sort((a, b) => Number(a.price) - Number(b.price))
         }
-        else {
-            return <p>Nessun prodotto disponibile</p>
+        if (sort === "DES") {
+            items.sort((a, b) => Number(b.price) - Number(a.price))
         }
+        return items.map((f) => {
+            return <div key={f.id} className="col-3 mt-4">
+                <Card
+                    img={f.image_url}
+                    title={f.name}
+                    description={f.description}
+                    price={f.price}
+                    handleClick={handlebutton}
+                    id={f.id}
+                />
+            </div>
+        })
     }
 
-
-
+    console.log(sort)
 
     return (
         <>
-            <div className="container">
+            <div className="container p-2 mb-2">
                 <div className="row mt-5 g-3">
                     <div className='sticky-top'>
                         {alert && <div className="alert alert-success alert-dismissible fade show" role="alert">
@@ -91,7 +83,7 @@ const Shop = () => {
                     <div className="col-12 d-flex justify-content-center">
                         <h1 className='bold' style={{ color: 'rgba(52, 27, 37, 1)' }}>Our patisserie</h1>
                     </div>
-                    <div className="col-12">
+                    <div className="col-12 d-flex justify-content-between">
                         <div className='search d-flex align-items-center justify-content-between'>
                             <i class="fa-solid fa-magnifying-glass"></i>
                             <input type="search"
@@ -100,11 +92,21 @@ const Shop = () => {
                                 onChange={(e) => setQuery(e.target.value)}
                             />
                         </div>
+                        <div className="filetrBtn d-flex align-items-center">
+                            <span className='bold me-2' style={{ whiteSpace: 'nowrap', color: 'rgba(52, 27, 37, 1)' }}>ORDINA PER :</span>
+                            <select className="form-select" aria-label="Default select example"
+                                onChange={(e) => setSort(e.target.value)}
+                            >
+                                <option value='default'>Default</option>
+                                <option value="ASC">Ascending price</option>
+                                <option value="DES">Descending price</option>
+                            </select>
+                        </div>
                     </div>
                     {renderProducts()}
 
                 </div>
-            </div>
+            </div >
         </>
     )
 }
