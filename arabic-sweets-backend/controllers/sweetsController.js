@@ -103,6 +103,7 @@ const createOrder = ((req, res) => {
     const insertOrderItems = `INSERT INTO order_items(order_id, product_id, quantity, price) SELECT ?, cart_items.product_id, cart_items.quantity, products.price FROM cart_items JOIN products ON products.id = cart_items.product_id`
     const sumSql = `SELECT sum(cart_items.quantity * products.price) AS total FROM cart_items JOIN products ON cart_items.product_id = products.id`
     const setTotalSql = `UPDATE orders SET total = ? WHERE id = ?`
+    const restoreCartSql = `DELETE FROM cart_items`
 
     connection.query(createOrderSql, (err, result) => {
         if (err) return res.status(500).json({ error: `Database query failed: ${err}` })
@@ -113,10 +114,21 @@ const createOrder = ((req, res) => {
             connection.query(sumSql, (err, result) => {
                 if (err) return res.status(500).json({ error: `Database query failed: ${err}` })
                 const total = result[0].total
+                let finalTotal = Number(total)
+                if (total > 80) {
+                    finalTotal = finalTotal + 5
+                }
+                else {
+                    finalTotal = finalTotal + 10
+                }
 
-                connection.query(setTotalSql, [total, orderId], (err) => {
+                connection.query(setTotalSql, [finalTotal, orderId], (err) => {
                     if (err) return res.status(500).json({ error: `Database query failed: ${err}` })
-                    res.send('Order created!')
+
+                    connection.query(restoreCartSql, (err) => {
+                        if (err) return res.status(500).json({ error: `Database query failed: ${err}` })
+                        res.send('Order created and cart emptied!')
+                    })
                 })
             })
 

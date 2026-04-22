@@ -17,7 +17,14 @@ const DefaultLayout = () => {
             <main>
                 <Outlet />
             </main>
-            <footer></footer>
+            <footer>
+                <div className='me'>
+                    <span>© 2026 – Fadi Alashqar</span>
+                    <span> Linkedin : www.linkedin.com/in/fadi-alashqar-825889280</span>
+                    <span>Github : https://github.com/FadiAlashqar</span>
+                    <span>Mail : fadialshqar.fa01@gmail.com</span>
+                </div>
+            </footer>
         </>
     )
 }
