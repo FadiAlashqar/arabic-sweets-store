@@ -8,7 +8,7 @@ import axios from 'axios'
 
 const Home = () => {
 
-    const { info, loading, error } = useContext(GlobalContext)
+    const { info, loading, error, fetchCart } = useContext(GlobalContext)
 
     const [alert, setAlert] = useState(false)
 
