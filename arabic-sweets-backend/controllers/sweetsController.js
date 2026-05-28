@@ -46,7 +46,7 @@ const addToCart = ((req, res) => {
 
     const id = Number(req.params.id)
     const addSql = `INSERT INTO cart_items ( product_id, quantity ) VALUES ( ? ,1 )`
-    const showSql = `SELECT * FROM arabicsweets_db.cart_items WHERE product_id = ?`
+    const showSql = `SELECT * FROM defaultdb.cart_items WHERE product_id = ?`
     const updateSql = `UPDATE cart_items SET quantity = quantity + 1 WHERE product_id = ?`
 
     connection.query(showSql, [id], (err, result) => {
@@ -71,7 +71,7 @@ const addToCart = ((req, res) => {
 
 const updateRemoveFromCart = ((req, res) => {
     const id = Number(req.params.id)
-    const showSql = `SELECT * FROM arabicsweets_db.cart_items WHERE product_id = ?`
+    const showSql = `SELECT * FROM defaultdb.cart_items WHERE product_id = ?`
     const updateSql = `UPDATE cart_items SET quantity = quantity - 1 WHERE product_id = ?`
     const deleteSql = `DELETE FROM cart_items WHERE product_id = ?`
 
