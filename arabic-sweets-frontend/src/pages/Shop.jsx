@@ -21,7 +21,7 @@ const Shop = () => {
 
     const handlebutton = async (id) => {
         try {
-            const res = await axios.post(`http://localhost:3000/API/sweets/add/${id}`)
+            const res = await axios.post(`https://arabic-sweets-backend.onrender.com/API/sweets/add/${id}`)
             setAlert(true)
             fetchCart()
             setTimeout(() => setAlert(false), 2500)

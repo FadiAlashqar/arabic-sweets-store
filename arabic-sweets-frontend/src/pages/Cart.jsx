@@ -13,7 +13,7 @@ const Cart = () => {
 
     const handleRemove = async (id) => {
         try {
-            await axios.patch(`http://localhost:3000/API/sweets/remove/${id}`)
+            await axios.patch(`https://arabic-sweets-backend.onrender.com/API/sweets/remove/${id}`)
             fetchCart()
         }
         catch (err) {
@@ -23,7 +23,7 @@ const Cart = () => {
 
     const handleAdd = async (id) => {
         try {
-            await axios.post(`http://localhost:3000/API/sweets/add/${id}`)
+            await axios.post(`https://arabic-sweets-backend.onrender.com/API/sweets/add/${id}`)
             fetchCart()
         }
         catch (err) {
@@ -33,7 +33,7 @@ const Cart = () => {
 
     const handleSubmit = async () => {
         try {
-            await axios.post('http://localhost:3000/API/sweets/order')
+            await axios.post('https://arabic-sweets-backend.onrender.com/API/sweets/order')
             fetchCart()
             setAlert(true)
             setTimeout(() => setAlert(false), 3000)

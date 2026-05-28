@@ -12,7 +12,7 @@ export default function GlobalProvider({ children }) {
 
     const fetchInfo = async () => {
         try {
-            const res = await axios.get('http://localhost:3000/API/sweets')
+            const res = await axios.get('https://arabic-sweets-backend.onrender.com/API/sweets')
             setInfo(res.data)
         }
         catch (err) {
@@ -27,7 +27,7 @@ export default function GlobalProvider({ children }) {
 
     const fetchCart = async () => {
         try {
-            const cartRes = await axios.get('http://localhost:3000/API/sweets/view/cart')
+            const cartRes = await axios.get('https://arabic-sweets-backend.onrender.com/API/sweets/view/cart')
             setCartInfo(cartRes.data)
         }
         catch (err) {
