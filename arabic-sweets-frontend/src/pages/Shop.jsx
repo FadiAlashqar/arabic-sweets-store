@@ -31,7 +31,7 @@ const Shop = () => {
         }
     }
 
-    const filteredInfo = useMemo(() => info.filter((i) => i.name.toLowerCase().includes(query) || i.description.toLowerCase().includes(query)), [query, info])
+    const filteredInfo = useMemo(() => info.filter((i) => i.name.toLowerCase().includes(query.toLowerCase()) || i.description.toLowerCase().includes(query.toLowerCase())), [query, info])
 
     console.log(filteredInfo, "filtered info")
     console.log(sort)
@@ -89,7 +89,7 @@ const Shop = () => {
                             <input type="search"
                                 value={query}
                                 placeholder='Search item...'
-                                onChange={(e) => setQuery(e.target.value)}
+                                onChange={(e) => setQuery(e.target.value.toLowerCase())}
                             />
                         </div>
                         <div className="filetrBtn d-flex align-items-center">
